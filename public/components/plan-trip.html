@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+
+  <!-- ===============================================-->
+  <!--    Document Title-->
+  <!-- ===============================================-->
+  <title>traveLLex - Plan Your Trip</title>
+
+  <!-- ===============================================-->
+  <!--    Favicons-->
+  <!-- ===============================================-->
+  <link rel="apple-touch-icon" sizes="180x180" href="../public/assets/img/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/img/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../public/assets/img/favicons/favicon.ico">
+  <link rel="manifest" href="../public/assets/img/favicons/manifest.json">
+  <meta name="msapplication-TileImage" content="../public/assets/img/favicons/mstile-150x150.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- ===============================================-->
+  <!--    Stylesheets-->
+  <!-- ===============================================-->
+  <link href="../public/assets/css/theme.min.css" rel="stylesheet" />
+
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print"
+    onload="this.media='all'" />
+
+  <!-- Component specific CSS -->
+  <link href="css/plan-trip.css" rel="stylesheet" />
+
+  <!-- Fonts preload -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="plan-page-bg">
+  <div class="page-container">
+    <div class="content-wrap">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="plan-trip-container">
+              <h1 class="plan-trip-header">Plan Your <span>Trip</span></h1>
+              <p class="text-muted mb-4">Fill in the details below to create your perfect travel itinerary</p>
+
+              <form>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="destination" class="form-label">Destination</label>
+                    <input type="text" class="form-control" id="destination" placeholder="Where do you want to go?">
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="travelDates" class="form-label">Travel Dates</label>
+                    <input type="text" class="form-control" id="travelDates" placeholder="Select your travel dates">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="travelers" class="form-label">Number of Travelers</label>
+                    <input type="number" class="form-control" id="travelers" min="1" value="1">
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="budget" class="form-label">Budget Range</label>
+                    <input type="range" class="form-range" id="budget" min="0" max="10000" step="100">
+                    <div class="d-flex justify-content-between">
+                      <span>$0</span>
+                      <span class="range-value">$5000</span>
+                      <span>$10000</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preferences-section">
+                  <h3 class="preferences-title">Travel Preferences</h3>
+                  <div class="tab-nav">
+                    <button type="button" class="tab-btn active">Accommodation</button>
+                    <button type="button" class="tab-btn">Activities</button>
+                    <button type="button" class="tab-btn">Transportation</button>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Preferred Accommodation Type</label>
+                    <div class="activity-option">
+                      <input type="checkbox" class="btn-check" id="hotel" autocomplete="off">
+                      <label class="btn btn-outline-primary" for="hotel">Hotel</label>
+                    </div>
+                    <div class="activity-option">
+                      <input type="checkbox" class="btn-check" id="hostel" autocomplete="off">
+                      <label class="btn btn-outline-primary" for="hostel">Hostel</label>
+                    </div>
+                    <div class="activity-option">
+                      <input type="checkbox" class="btn-check" id="apartment" autocomplete="off">
+                      <label class="btn btn-outline-primary" for="apartment">Apartment</label>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn plan-btn w-100">Generate Travel Plan</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../public/assets/js/theme.min.js"></script>
+</body>
+
+</html> 

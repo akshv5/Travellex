@@ -1,0 +1,226 @@
+/* Additional CSS for body on mobile devices */
+@media (max-width: 767.98px) {
+  body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.footer-wrap {
+  flex-shrink: 0;
+}
+
+/* Form Styles */
+.plan-trip-container {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #F1A501;
+  box-shadow: 0 0 0 0.25rem rgba(241, 165, 1, 0.2);
+}
+
+/* Active form field highlight */
+.form-control:active,
+.form-select:active {
+  border-color: #F1A501;
+}
+
+/* Darken placeholders for better visibility */
+::placeholder {
+  color: #666 !important;
+  opacity: 1;
+}
+
+/* Darken text-muted class */
+.text-muted {
+  color: #555 !important;
+}
+
+/* Darken form helper text */
+.form-text {
+  color: #666 !important;
+}
+
+.plan-btn {
+  background: linear-gradient(90deg, #F1A501, #DF6951);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.plan-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(223, 105, 81, 0.3);
+}
+
+.plan-btn:active {
+  transform: translateY(-1px);
+}
+
+.plan-page-bg {
+  background-color: #f8f9fa;
+  background-image: url('../assets/img/hero/hero-bg.svg');
+  background-size: cover;
+  background-position: center;
+}
+
+.plan-trip-header {
+  font-size: 28px;
+  font-weight: bold;
+  color: #212529;
+  margin-bottom: 1rem;
+}
+
+.plan-trip-header span {
+  color: #F1A501;
+}
+
+.activity-option {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-range::-webkit-slider-thumb {
+  background: #F1A501;
+}
+
+.form-range::-moz-range-thumb {
+  background: #F1A501;
+}
+
+.form-range::-ms-thumb {
+  background: #F1A501;
+}
+
+.range-value {
+  font-weight: 600;
+  color: #F1A501;
+}
+
+.location-icon {
+  color: #F1A501;
+}
+
+.preferences-section {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.preferences-title {
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #F1A501;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-nav {
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: none;
+  font-weight: 600;
+  color: #6c757d;
+  position: relative;
+}
+
+.tab-btn.active {
+  color: #F1A501;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #F1A501;
+}
+
+.navbar {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  background-color: #fff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  transform-origin: left center;
+}
+
+.nav-link {
+  color: #212529 !important;
+}
+
+.navbar-nav .nav-link.active {
+  color: #F1A501 !important;
+}
+
+@media (max-width: 767.98px) {
+  .content-wrap {
+    padding-top: 70px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+} 

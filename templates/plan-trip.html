@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+
+  <!-- ===============================================-->
+  <!--    Document Title-->
+  <!-- ===============================================-->
+  <title>traveLLex - Plan Your Trip</title>
+
+  <!-- ===============================================-->
+  <!--    Favicons-->
+  <!-- ===============================================-->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/favicons/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicons/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicons/favicon-16x16.png') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicons/favicon.ico') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='img/favicons/manifest.json') }}">
+  <meta name="msapplication-TileImage" content="{{ url_for('static', filename='img/favicons/mstile-150x150.png') }}">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- ===============================================-->
+  <!--    Stylesheets-->
+  <!-- ===============================================-->
+  <link href="{{ url_for('static', filename='css/theme.min.css') }}" rel="stylesheet" />
+
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print"
+    onload="this.media='all'" />
+
+  <!-- Page specific CSS -->
+  <link href="{{ url_for('static', filename='css/plan-trip.css') }}" rel="stylesheet" />
+
+  <!-- Fonts preload -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="plan-page-bg">
+  <div class="page-container">
+    <div class="content-wrap">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="plan-trip-container">
+              <h1 class="plan-trip-header">Plan Your <span>Trip</span></h1>
+              <p class="text-muted mb-4">Fill in the details below to create your perfect travel itinerary</p>
+
+              <!-- Flash Messages -->
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+
+              <form action="{{ url_for('plan_trip') }}" method="POST">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="destination" class="form-label">Destination</label>
+                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Where do you want to go?" required>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="travelDates" class="form-label">Travel Dates</label>
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="startDate" class="form-label small text-muted">From</label>
+                        <input type="date" class="form-control" id="startDate" name="startDate" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="endDate" class="form-label small text-muted">To</label>
+                        <input type="date" class="form-control" id="endDate" name="endDate" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="travelers" class="form-label">Number of Travelers</label>
+                    <input type="number" class="form-control" id="travelers" name="travelers" min="1" value="1">
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="budget" class="form-label">Budget Range</label>
+                    <input type="range" class="form-range" id="budget" name="budget" min="0" max="10000" step="100" value="5000">
+                    <div class="d-flex justify-content-between">
+                      <span>$0</span>
+                      <span class="range-value" id="budgetValue">$5000</span>
+                      <span>$10000</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preferences-section">
+                  <h3 class="preferences-title">Travel Preferences</h3>
+                  <div class="tab-nav">
+                    <button type="button" class="tab-btn active" data-tab="accommodation">Accommodation</button>
+                    <button type="button" class="tab-btn" data-tab="activities">Activities</button>
+                    <button type="button" class="tab-btn" data-tab="transportation">Transportation</button>
+                  </div>
+
+                  <!-- Accommodation Tab -->
+                  <div class="tab-content active" id="accommodation-tab">
+                    <div class="mb-3">
+                      <label class="form-label">Preferred Accommodation Type</label>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="hotel" name="accommodation[]" value="hotel" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="hotel">Hotel</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="hostel" name="accommodation[]" value="hostel" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="hostel">Hostel</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="apartment" name="accommodation[]" value="apartment" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="apartment">Apartment</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Activities Tab -->
+                  <div class="tab-content" id="activities-tab" style="display: none;">
+                    <div class="mb-3">
+                      <label class="form-label">What activities interest you?</label>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="sightseeing" name="activities[]" value="sightseeing" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="sightseeing">Sightseeing</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="adventure" name="activities[]" value="adventure" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="adventure">Adventure</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="culture" name="activities[]" value="culture" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="culture">Cultural Experience</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="relaxation" name="activities[]" value="relaxation" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="relaxation">Relaxation</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Transportation Tab -->
+                  <div class="tab-content" id="transportation-tab" style="display: none;">
+                    <div class="mb-3">
+                      <label class="form-label">Preferred Transportation Methods</label>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="flight" name="transportation[]" value="flight" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="flight">Flight</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="train" name="transportation[]" value="train" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="train">Train</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="car" name="transportation[]" value="car" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="car">Rental Car</label>
+                      </div>
+                      <div class="activity-option">
+                        <input type="checkbox" class="btn-check" id="public" name="transportation[]" value="public" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="public">Public Transport</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn plan-btn w-100">Generate Travel Plan</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/theme.min.js') }}"></script>
+  
+  <!-- Custom script for form functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Budget range slider
+      const budgetSlider = document.getElementById('budget');
+      const budgetValue = document.getElementById('budgetValue');
+      
+      budgetSlider.addEventListener('input', function() {
+        budgetValue.textContent = '$' + this.value;
+      });
+
+      // Tab navigation
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Hide all tab contents
+          tabContents.forEach(content => {
+            content.style.display = 'none';
+          });
+          
+          // Show the selected tab content
+          const tabName = this.getAttribute('data-tab');
+          const activeTab = document.getElementById(tabName + '-tab');
+          if (activeTab) {
+            activeTab.style.display = 'block';
+          }
+        });
+      });
+
+      // Set minimum date for date inputs
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('startDate').min = today;
+      document.getElementById('endDate').min = today;
+      
+      // Ensure end date is after start date
+      const startDateInput = document.getElementById('startDate');
+      const endDateInput = document.getElementById('endDate');
+      
+      startDateInput.addEventListener('change', function() {
+        endDateInput.min = this.value;
+        if (endDateInput.value < this.value) {
+          endDateInput.value = this.value;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html> 

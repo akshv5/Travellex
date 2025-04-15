@@ -1,0 +1,108 @@
+/* Services Component Styles */
+.services-section {
+  background-color: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0 0 L100 0 L100 100 L0 100 Z" fill="%23f8f9fa" opacity="0.05"/></svg>');
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.modern-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.modern-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.gradient-top {
+  height: 8px;
+  background: linear-gradient(90deg, #315BF3 0%, #6C8AEC 100%);
+}
+
+.icon-container {
+  width: 85px;
+  height: 85px;
+  background-color: #F6F6F6;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px auto;
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover .icon-container {
+  background-color: #315BF3;
+  transform: rotate(5deg);
+}
+
+.modern-card:hover .icon-container img {
+  filter: brightness(0) invert(1);
+}
+
+.action-button {
+  color: white;
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #315BF3 0%, #6C8AEC 100%);
+  border: none;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(49, 91, 243, 0.3);
+}
+
+@media (max-width: 767.98px) {
+  .services-section {
+    padding: 3rem 0;
+  }
+
+  .modern-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+}
+
+/* Animation for Services Section */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.services-section .animate__animated {
+  animation-duration: 1s;
+}
+
+.services-section .animate__slideInUp {
+  animation-name: slideInUp;
+} 
