@@ -14,6 +14,8 @@ def serve_static(path):
 def home():
     return render_template('index.html')
 
+
+
 # Route for the login page
 @app.route('/login')
 def login():
