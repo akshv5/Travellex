@@ -95,9 +95,9 @@
                     <label for="budget" class="form-label">Budget Range</label>
                     <input type="range" class="form-range" id="budget" name="budget" min="0" max="10000" step="100" value="5000">
                     <div class="d-flex justify-content-between">
-                      <span>$0</span>
-                      <span class="range-value" id="budgetValue">$5000</span>
-                      <span>$10000</span>
+                      <span>₹0</span>
+                      <span class="range-value" id="budgetValue">₹5000</span>
+                      <span>₹10000</span>
                     </div>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
       const budgetValue = document.getElementById('budgetValue');
       
       budgetSlider.addEventListener('input', function() {
-        budgetValue.textContent = '$' + this.value;
+        budgetValue.textContent = '₹' + this.value;
       });
 
       // Tab navigation
